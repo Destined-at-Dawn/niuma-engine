@@ -3,7 +3,7 @@
 ## 铁律
 **任何脚本在执行前，必须通过安全检查清单。没有例外。**
 
-这条规则的诞生原因：2026-05-24 一个清理脚本差点删除 Windows 系统启动目录（C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup），被 UAC 拦截。根因是 Remove-Item 的路径指向了目录本身而非目录内的具体文件。
+这条规则的诞生原因：一个清理脚本差点删除 Windows 系统启动目录，被 UAC 拦截。根因是 Remove-Item 的路径指向了目录本身而非目录内的具体文件。
 
 ---
 
