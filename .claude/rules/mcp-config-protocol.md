@@ -12,8 +12,8 @@
 
 | 环境 | 配置路径 | 备注 |
 |------|---------|------|
-| **Newmax（牛马AI）** | `C:\Users\13975\.newmax\.mcp.json` | ✅ 唯一正确路径 |
-| Claude Code 原版 | `C:\Users\13975\.mcp.json` | ❌ Newmax 不读这个 |
+| **Newmax（牛马AI）** | `~/.newmax/.mcp.json` | ✅ 唯一正确路径 |
+| Claude Code 原版 | `~/.mcp.json` | ❌ Newmax 不读这个 |
 
 - ❌ **禁止**往 `~/.mcp.json` 写 MCP 配置（写了也白写，Newmax 不会加载）
 - ✅ **必须**写入 `~/.newmax/.mcp.json`
