@@ -148,7 +148,7 @@ L3 全局规则（始终生效）
 | AI 每次对话风格不一样 | `identity-consistency.md` + `preference-memory.md` |
 | 脚本差点删错东西 | `script-safety-check.md` |
 | AI 偷偷覆写文件 | `no-blind-overwrite.md` |
-| 想从零搭建完整纪律体系 | 全装 `.claude/rules/` |
+| 想从零搭建完整纪律体系 | 全装 `.claude/rules/`（共29条） |
 
 **为什么用痛点不用功能来分类？** 因为如果我列"十个超强功能"，你不会知道哪个是你真正需要的。但如果我问"你被 AI 的假成绩坑过吗"，你立刻就知道了。
 
@@ -179,8 +179,20 @@ cd niuma-engine
 | 2026-05-26 | 用户纠正"每次都像换了个人" | 身份一致性 + 偏好记忆 |
 | 2026-05-27 | 多轮对话信息过载导致关键信息丢失 | 防信息过载 + 边界声明 |
 | 2026-05-28 | 10 条法则 + 6 阶段融为一个框架 | 进化日历 + 启动序列 |
+| 2026-06-07 | Windows 中文路径反复炸 heredoc | chinese-path-safety (禁Bash heredoc + 中文用Python) |
+| 2026-06-09 | Agent子会话无上下文跑偏(5次故障复盘) | agent-prompt-ironclad (三要素铁律) |
+| 2026-06-10 | 并发Agent全部429浪费2整轮对话 | agent-concurrency-fallback (并发降级协议) |
+| 2026-06-11 | 教训只记不改=白记 | lesson-auto-update (用户纠正→自动更新工作流) |
+| 2026-06-11 | SKILL.md执行协议被跳过 | skill-execution-discipline + skill-logging-enforcement |
+| 2026-06-13 | 6次创建skill后忘记注册路由 | skill-route-enforcement (创建必注册) |
+| 2026-06-14 | "必要时搜索"太模糊,需要精确决策树 | search-decision-tree (搜索决策树+深度分级) |
+| 2026-06-14 | 竞赛项目文件管理混乱 | competition-workspace-architecture (主文件夹唯一真相源) |
+| 2026-06-15 | AI写作风格与用户不一致 | 文风DNA自动注入 (写作默认用用户风格) |
+| 2026-06-20 | Git .gitignore误排除可恢复临时文件 | git-recovery (删前commit+30秒恢复) |
+| 2026-06-21 | 单技能不够,需要联动协作链 | skill-auto-activation v2.0 (三层路由+联动+自学习) |
+| 2026-06-22 | 仓库从1.0升级到v4.0: 10条规则 → 29条 | **v4.0 发布** (规则全集+结构性修复) |
 
-**这个框架现在还活着。** 每次我在 5 个工作区里继续协作，新的模式被识别，规则就更新。你看到的不是"最终版"，是这个时间点的快照。
+**这个框架现在还活着。** 每次我在 5 个工作区里继续协作，新的模式被识别，规则就更新。v4.0 包含了从 2026年5月底到6月22日的所有事故教训和规则结晶。你看到的不是"最终版"，是这个时间点的快照。
 
 ---
 
@@ -189,18 +201,38 @@ cd niuma-engine
 ```
 niuma-engine/
 ├── README.md                     ← 你在这
-├── .claude/rules/                ← 核心规则（Claude Code 自动加载）
-│   ├── 10-engineering-laws.md        十条贯穿性工程法则
-│   ├── lifecycle-sop.md              六阶段项目生命周期
-│   ├── anti-illusion-audit.md        防假象审计（五连问）
-│   ├── negative-results.md           负结果归档
-│   ├── think-before-act.md           动手前必先思考
-│   ├── script-safety-check.md        脚本安全检查
-│   ├── no-blind-overwrite.md         禁止盲目覆写
-│   ├── memory-candidate-protocol.md  记忆写入确认
-│   ├── memory-confidence.md          记忆置信度与失效
-│   └── ...（更多规则）
-├── templates/                    ← 记忆模板
+├── CHANGELOG.md                  ← 版本历史
+├── .claude/rules/                ← 核心规则（Claude Code 自动加载，共 29 条）
+│   ├── 10-engineering-laws.md                   十条贯穿性工程法则 (证据分层/防假象审计/实测优先/隔离契约/负结果归档/规则结晶等)
+│   ├── _MIGRATED-TO-RULES.md                    规则迁移说明与反向防御
+│   ├── agent-concurrency-fallback.md            Agent 并发降级协议 -- 429限流时立即切换顺序模式，禁止等待重试
+│   ├── agent-prompt-ironclad.md                 Agent Prompt 铁律 -- 三要素强制(具体目标/输出格式/停止条件)
+│   ├── anti-illusion-audit.md                   防假象审计 -- 五连问检测异常好/坏数字是否为假象
+│   ├── anti-info-overload.md                    防信息过载 -- 金字塔结构/信息分层/数据筛选
+│   ├── boundary-declaration.md                  边界声明 -- 三栏清单(可写入/不可写入/尚不能声称)
+│   ├── chinese-path-safety.md                   中文路径安全 -- Windows下中文路径必须用Python,禁Bash heredoc
+│   ├── competition-workspace-architecture.md    竞赛项目工作区架构 -- 主文件夹唯一真相源+两级Memory
+│   ├── dual-write-protocol.md                   双写协议 -- 经验教训必须同时写入根级和模块级
+│   ├── git-recovery.md                          Git检查点与恢复 -- 删前commit快照+30秒恢复
+│   ├── lesson-auto-update.md                    教训闭环自动更新 -- 用户纠正→工作流更新→不再重犯
+│   ├── lifecycle-sop.md                         六阶段项目生命周期SOP -- 立项/探索/并行/签核/复盘/交付
+│   ├── mcp-config-protocol.md                   MCP配置协议 -- 路径/命令格式/wrapper启动/验证四铁律
+│   ├── memory-candidate-protocol.md             记忆沉淀候选机制 -- 写入前用户确认+四种Nudge自动推动
+│   ├── memory-confidence.md                     记忆置信度与失效条件 -- 高/中/待确认三级+过期自动标注
+│   ├── negative-results.md                      负结果归档 -- 死路必须入档,防止下个对话重新踩坑
+│   ├── no-blind-overwrite.md                    禁止盲目覆写 -- 写已有文件前必须先Read
+│   ├── no-root-rules-dir.md                     禁止根目录rules/ -- 规则唯一存放位置:.claude/rules/
+│   ├── powershell-safety.md                     PowerShell安全 -- 禁止inline $_ / 中文路径用Python
+│   ├── pre-action-check.md                      动手前检查 -- 写脚本/生成图/填模板前必须先检索已有资源
+│   ├── script-safety-check.md                   脚本安全检查 -- 删除精确到文件/dry-run/路径白名单
+│   ├── search-decision-tree.md                  搜索决策树 -- 何时搜索/搜索深度/工具选择的精确决策流程
+│   ├── skill-auto-activation.md                 技能自动激活 (v2.0) -- 三层路由+联动链+自我学习闭环
+│   ├── skill-execution-discipline.md            Skill执行纪律 -- 调用skill必须先读执行协议,不可跳过
+│   ├── skill-logging-enforcement.md             Skill调用日志 -- 每次调用后记录/漏调回检/沉睡技能审查
+│   ├── skill-route-enforcement.md               Skill路由注册 -- 创建/修改/弃用skill必须注册路由
+│   ├── subagent-strategy.md                     Sub-Agent策略 -- 何时用/不用/模型选择/故障恢复
+│   ├── think-before-act.md                      Think Before Act -- 新问题必须研究先行,不可凭感觉动手
+├── templates/                    ← 记忆模板（中/英）
 ├── adapters/                     ← 各 Agent 适配器
 └── docs/                         ← 设计哲学 + 安装指南
 ```
