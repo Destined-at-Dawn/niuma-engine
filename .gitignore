@@ -9,7 +9,8 @@
 
 # === AI 工作区（禁止上传） ===
 CLAUDE.md
-.claude/
+.claude/*
+!.claude/rules/
 memory/
 outputs/
 skills/
