@@ -24,7 +24,7 @@ powershell -ExecutionPolicy Bypass -File /tmp/task.ps1
 ```
 Key: The `'PSEOF'` (single-quoted) prevents bash from expanding any variables inside the heredoc.
 
-> ⚠️ **中文路径警告**：如果路径或内容包含中文字符，**禁止使用 heredoc**（单引号也不行，MSYS2 locale 层会破坏编码）。中文场景一律改用 Python 脚本。详见 `chinese-path-safety.md`。
+> ⚠ **中文路径警告**：如果路径或内容包含中文字符，**禁止使用 heredoc**（单引号也不行，MSYS2 locale 层会破坏编码）。中文场景一律改用 Python 脚本。详见 `chinese-path-safety.md`。
 
 ### Pattern 2: Inline with escaped variables (simple one-liners only)
 For commands that do NOT use `$_`, use:
