@@ -2,31 +2,33 @@
 
 ## Integration Method
 
-Codex uses `AGENTS.md` as its root guide. niuma-engine's `CLAUDE.md` needs to be bridged to `AGENTS.md`.
+Codex uses `AGENTS.md` as its root guide.
 
 ### Quick Integration
 
-1. Create `AGENTS.md` in the project root directory (if it does not exist)
-2. Add the following at the top of `AGENTS.md`:
+1. Create `AGENTS.md` in the project root, referencing the full rule set:
 
 ```markdown
-> Engineering framework: This project uses niuma-engine.
-> Rule files are in the .claude/rules/ directory.
-> See CLAUDE.md for detailed guidelines.
+> Engineering framework: This project uses niuma-engine v4.0 (29 rules).
+> All rule files are in the .claude/rules/ directory.
+> See CLAUDE.md for the startup sequence and core principles.
 ```
 
-3. Append the contents of rule files in `.claude/rules/` to `AGENTS.md`, or keep them as independent files with references.
+2. Append rule references to `AGENTS.md`:
 
-### Rule Loading
-
-Codex automatically reads the `AGENTS.md` file in the project root directory. If rule files are kept independent, they must be explicitly referenced in `AGENTS.md`:
-```
-## Engineering Rules
-- See .claude/rules/10-engineering-laws.md for details
-- See .claude/rules/lifecycle-sop.md for details
+```markdown
+## Engineering Rules (niuma-engine v4.0)
+- Core: .claude/rules/10-engineering-laws.md (10 cross-cutting laws)
+- Lifecycle: .claude/rules/lifecycle-sop.md (6-stage project lifecycle)
+- Audit: .claude/rules/anti-illusion-audit.md (anti-illusion five questions)
+- Archive: .claude/rules/negative-results.md (dead end archiving)
+- Safety: .claude/rules/script-safety-check.md + no-blind-overwrite.md
+- Agents: .claude/rules/agent-prompt-ironclad.md + subagent-strategy.md + agent-concurrency-fallback.md
+- Search: .claude/rules/search-decision-tree.md + lesson-auto-update.md
+- Full set: 29 rules in .claude/rules/
 ```
 
 ### Notes
-- Codex does not automatically load the `.claude/rules/` directory
-- All critical rules must have references or be inlined in `AGENTS.md`
-- Memory file paths (memory/) remain unchanged
+- Codex does not auto-load `.claude/rules/` — must be referenced in `AGENTS.md`
+- All critical rules should have references in `AGENTS.md`
+- Total: 29 rule files, ~124KB of engineering discipline

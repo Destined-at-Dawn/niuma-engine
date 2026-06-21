@@ -8,7 +8,8 @@
 *.secret
 
 # === AI 工作区（禁止上传） ===
-CLAUDE.md
+!CLAUDE.md
+!EVOLUTION.md
 .claude/*
 !.claude/rules/
 memory/

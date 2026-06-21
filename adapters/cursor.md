@@ -2,26 +2,29 @@
 
 ## Integration Method
 
-Cursor uses `.cursor/rules` or rule files in the project root directory.
+Cursor loads `.md` files under `.cursor/rules/` as project rules.
 
 ### Quick Integration
 
-1. Create symbolic links or copy rule files under the `.cursor/rules/` directory:
-   ```bash
-   # Symbolic links (recommended, stays in sync)
-   ln -s ../.claude/rules/* .cursor/rules/
+```bash
+# Option 1: Symlink (recommended — auto-syncs)
+mkdir -p .cursor/rules
+ln -s ../../.claude/rules/* .cursor/rules/
+ln -s ../../CLAUDE.md .cursor/rules/niuma-engine-entry.md
 
-   # Or copy directly
-   cp .claude/rules/* .cursor/rules/
-   ```
-
-2. Create a `niuma-engine.md` file under `.cursor/rules/` that references the root CLAUDE.md.
+# Option 2: Copy (one-time)
+cp .claude/rules/* .cursor/rules/
+cp CLAUDE.md .cursor/rules/niuma-engine-entry.md
+```
 
 ### Rule Loading
+Cursor loads all `.md` files under `.cursor/rules/` as project rules. With niuma-engine v4.0, this means all 29 rules are active.
 
-Cursor loads all `.md` files under the `.cursor/rules/` directory as project rules.
+### Minimal Install
+Not every project needs all 29 rules. Pick by pain point:
+- Copy only the rules matching your current problems
+- See README.md "按痛点安装" section for guidance
 
 ### Notes
-- Cursor's rule loading mechanism differs from Claude Code
-- If using symbolic links, changes to `.claude/rules/` will automatically sync
-- Memory file paths remain unchanged
+- Symlinks keep rules in sync when you `git pull` updates
+- Memory file paths (memory/) are unchanged
