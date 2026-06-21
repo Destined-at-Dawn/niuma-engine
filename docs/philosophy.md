@@ -1,41 +1,47 @@
-# Design Philosophy
+# 设计哲学
 
-## Three Fundamental Beliefs
+## niuma-engine 不是什么
 
-### 1. Honesty Determines Value
+❌ 不是"又一个提示词模板"
+❌ 不是"让 AI 变聪明"的魔法
+❌ 不是闭着眼装上就能用的插件
 
-A high score with a false calibration is a negative asset. Always ask first: "How was this number produced?"
+**这是一个纪律框架。** 它不会让 AI 变聪明，但它会让 AI：
+1. **少犯错** — 每个规则堵住一个已证实的事故模式
+2. **犯了错能被抓住** — 防假象审计、证据分层、门禁文化
+3. **同样的错不犯第二次** — 负结果归档、教训闭环、规则结晶
 
-The most dangerous mistake AI makes is not getting things wrong, but confidently giving wrong good results. A "test passed" without a calibration label is more dangerous than an explicit "test failed" -- because it makes you let your guard down.
+## 核心设计原则
 
-### 2. Efficiency Comes from Parallelism and Non-Repetition
+### 1. 从事故中生长，不从设计中诞生
+niuma-engine 的每一条规则，都对应至少一次真实事故。没有"我觉得应该有这条规则"——只有"这次事故后，必须加上这条规则"。
 
-An unrecorded dead end will be retried by every subsequent conversation.
+### 2. 按痛点安装，不按功能安装
+用户不需要理解所有规则。只需要知道：我踩过什么坑 → 装对应的规则。
 
-AI's context is limited. A "this path doesn't work" verified in the previous session is completely unknown to the next one. Archive once = all future sessions save that cost.
+### 3. 纪律 > 技巧
+提示词技巧在一周内过时。工程纪律在十年内有效。niuma-engine 追求的是后者。
 
-### 3. Boundary Awareness
+### 4. 信息密度 > 信息量
+每条规则文件都追求高信息密度：具体场景 + 具体禁止行为 + 具体触发条件。拒绝泛泛的"最佳实践"。
 
-A mature delivery is not "everything is done," but accurately knowing what was achieved and what cannot be claimed.
+### 5. 负结果是一等公民
+一条没被记录的死路，会被每个后续 Agent 重新踩一遍。负结果日志和正结果同等重要。
 
-Every deliverable comes with a three-column boundary checklist: verifiable material (with complete evidence), non-verifiable material (insufficient calibration), and claims not yet supportable (speculation).
+## v4.0 的核心洞察
 
-## Why Engineering Discipline is Needed
+v1.0 解决的是"单个 AI 如何像工程师一样工作"。
+v4.0 解决的是"多个 AI Agent 如何像工程团队一样协作"。
 
-AI agents are good at executing instructions, but not at:
-- Questioning their own output
-- Remembering which paths don't work
-- Saying "I'm not sure" when uncertain
-- Distinguishing "looks good" from "is actually good"
+规则从 10 条增长到 29 条，不是膨胀，是覆盖面的质变：
+- **Agent 管理三件套**：prompt铁律 + 子agent策略 + 并发降级
+- **Skill 生态治理**：创建必注册 + 调用必记录 + 执行协议不可跳过
+- **搜索与信息纪律**：搜索决策树 + 教训闭环自动更新
+- **安全纵深**：中文路径 + PowerShell + 脚本安全 + Git恢复
 
-niuma-engine fills these gaps.
+## 与 comemo 的关系
 
-## Relationship with Human Engineering Practices
-
-The laws of niuma-engine are not AI-specific -- they come from human engineering practices:
-- Evidence layering -> Scientific method's reproducibility
-- Anti-illusion audit -> Statistics' multiple comparison correction
-- Negative result archiving -> Laboratory notebook tradition
-- Gate culture -> CI/CD pipelines
-
-AI needs these because it is more prone than humans to the habit of "making mistakes with confidence."
+niuma-engine 不替代 comemo。comemo 管记忆存储，niuma-engine 管工程纪律。两者互补：
+- 用 comemo 做记忆分层存储
+- 用 niuma-engine 的记忆置信度标签 + 失效条件做可信度管理
+- 用 niuma-engine 的负结果归档防止重复踩坑
