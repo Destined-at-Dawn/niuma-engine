@@ -4,26 +4,51 @@
 
 Aider uses `.aider.conf.yml` or command-line arguments to load context.
 
-### Quick Integration
+### Quick Integration (Recommended)
 
-1. Add rule files as read-only context in `.aider.conf.yml`:
-   ```yaml
-   read:
-     - .claude/rules/10-engineering-laws.md
-     - .claude/rules/lifecycle-sop.md
-     - .claude/rules/anti-illusion-audit.md
-     - .claude/rules/negative-results.md
-     - CLAUDE.md
-   ```
+Add the entire rules directory as read-only context:
 
-2. Or specify at startup:
-   ```bash
-   aider --read .claude/rules/10-engineering-laws.md \
-         --read .claude/rules/lifecycle-sop.md \
-         --read CLAUDE.md
-   ```
+```yaml
+# .aider.conf.yml
+read:
+  - CLAUDE.md
+  - .claude/rules/10-engineering-laws.md
+  - .claude/rules/lifecycle-sop.md
+  - .claude/rules/think-before-act.md
+  - .claude/rules/anti-illusion-audit.md
+  - .claude/rules/negative-results.md
+  - .claude/rules/no-blind-overwrite.md
+  - .claude/rules/script-safety-check.md
+  - .claude/rules/anti-info-overload.md
+  - .claude/rules/boundary-declaration.md
+  - .claude/rules/memory-candidate-protocol.md
+  - .claude/rules/memory-confidence.md
+  - .claude/rules/agent-prompt-ironclad.md
+  - .claude/rules/agent-concurrency-fallback.md
+  - .claude/rules/subagent-strategy.md
+  - .claude/rules/search-decision-tree.md
+  - .claude/rules/lesson-auto-update.md
+  - .claude/rules/git-recovery.md
+  - .claude/rules/chinese-path-safety.md
+  - .claude/rules/powershell-safety.md
+  - .claude/rules/pre-action-check.md
+  - .claude/rules/mcp-config-protocol.md
+```
+
+### Minimal Install (pick by pain point)
+
+```yaml
+# Core only
+read:
+  - CLAUDE.md
+  - .claude/rules/10-engineering-laws.md
+  - .claude/rules/lifecycle-sop.md
+  - .claude/rules/think-before-act.md
+  - .claude/rules/no-blind-overwrite.md
+  - .claude/rules/script-safety-check.md
+```
 
 ### Notes
-- Aider's `--read` files are read-only context and will not be modified
-- Memory files need to be managed manually (Aider has no built-in memory system)
-- It is recommended to add MEMORY.md to the read list
+- Aider's `--read` files are read-only context
+- Memory files (memory/) are managed separately
+- Full rule list: 29 files in `.claude/rules/`

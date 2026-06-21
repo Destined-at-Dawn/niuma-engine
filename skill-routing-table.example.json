@@ -1,0 +1,16 @@
+{
+  "_comment": "Example skill routing table. Customize for your own skills/plugins.",
+  "_usage": "If you use AI skills/plugins, define trigger words here so the AI auto-activates the right skill.",
+  "version": "1.0",
+  "routes": [
+    {
+      "id": "r001",
+      "triggers": ["example trigger", "another way to say it"],
+      "skill": "your-skill-name",
+      "priority": 1,
+      "auto": true,
+      "confidence": 0.9,
+      "note": "Replace with your actual skill name and trigger words"
+    }
+  ]
+}

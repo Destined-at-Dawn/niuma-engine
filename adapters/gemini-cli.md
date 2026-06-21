@@ -2,21 +2,27 @@
 
 ## Integration Method
 
-Gemini CLI uses `GEMINI.md` or context files in the project root directory.
+Gemini CLI discovers `.md` files in the project root as context.
 
 ### Quick Integration
 
-1. Create `GEMINI.md` in the project root directory (if it does not exist)
-2. Reference niuma-engine rules in `GEMINI.md`:
-   ```markdown
-   > Engineering framework: This project uses niuma-engine.
-   > Rule files are in the .claude/rules/ directory.
-   > See CLAUDE.md for detailed guidelines.
-   ```
+1. Create `GEMINI.md` in project root:
 
-3. Gemini CLI automatically discovers `.md` files in the project root directory as context.
+```markdown
+> Engineering framework: niuma-engine v4.0 (29 rules).
+> Rule files are in .claude/rules/ — 10 core laws + 19 specialized rules.
+> See CLAUDE.md for the startup sequence and core principles.
+
+## Key Rules (summary)
+- Evidence Layering: every "pass" must carry a calibration label
+- Anti-Illusion Audit: high scores first audit how they were produced
+- Negative Result Archive: dead ends must be archived
+- Agent Prompt Iron Law: specific goal + output format + stop condition
+- Agent Concurrency Fallback: 429 rate limit -> immediate sequential mode
+```
+
+2. Gemini CLI automatically discovers `GEMINI.md` as context.
 
 ### Notes
-- Gemini CLI's context discovery mechanism is relatively loose
-- It is recommended to inline the most critical rules in `GEMINI.md`
-- Memory file paths remain unchanged
+- Gemini CLI's context discovery is loose — inline the most critical rules in GEMINI.md
+- Full rule set: 29 files in `.claude/rules/` (~124KB total)

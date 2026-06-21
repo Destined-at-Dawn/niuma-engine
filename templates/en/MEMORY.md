@@ -1,19 +1,23 @@
-# Long-term Memory Index
+# Project Memory
 
-> This file is automatically maintained by AI, recording cross-session long-term knowledge.
-> Write rule: must be confirmed by the user (memory candidate protocol).
+> This file records project-level decisions, lessons learned, and preferences.
+> The AI should read this file at the start of each conversation for continuity.
 
-## User Profile
-<!-- Record the user's basic information, professional background, and work direction -->
+---
 
-## Preferences
-<!-- Information density, output format, interaction style, and other preferences -->
+## Project Info
+- Name:
+- Goal:
+- Key Constraints:
 
-## Key Decisions
-<!-- Records of decisions that affect subsequent work -->
+## Important Decisions
+<!-- Format: [Date] Decision — Rationale -->
 
-## Lessons Learned
-<!-- Lessons learned from failures, including exit criteria -->
+## User Preferences
+<!-- Format: [Date] Preference -->
 
-## Tools & Tech Stack
-<!-- User's commonly used tools, frameworks, and tech stack -->
+## Lessons Learned (Pitfalls)
+<!-- Format: [Date] Pitfall — Root Cause — How to Avoid -->
+
+## Follow-ups
+<!-- Format: [Date] Item -->

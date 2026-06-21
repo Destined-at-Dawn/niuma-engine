@@ -2,36 +2,55 @@
 
 ## Automatic Installation (Recommended)
 
-Give this repository to your AI agent and have it execute the following instruction:
+Clone the repo, then tell your AI agent:
 
 ```
-Read the CLAUDE.md file and all files in .claude/rules/ directory.
-Then help me integrate niuma-engine into this project.
-Check for existing memory files, show me the installation plan,
-and do not overwrite anything without my approval.
+Read CLAUDE.md and the .claude/rules/ directory.
+Help me integrate niuma-engine into this project.
+Show me the installation plan. Do not overwrite anything without my approval.
 ```
+
+The AI will:
+1. Read the startup sequence in CLAUDE.md
+2. Load all 29 rules from .claude/rules/
+3. Check for existing memory files
+4. Propose an integration plan
 
 ## Manual Installation
 
-### Claude Code
-1. Copy `.claude/rules/` to your project root directory
-2. Copy `CLAUDE.md` to your project root directory (merge if it already exists)
-3. Copy `templates/zh-CN/` or `templates/en/` to `memory/`
+### Claude Code (Primary Target)
+```bash
+git clone https://github.com/Destined-at-Dawn/niuma-engine.git
+cp -r niuma-engine/.claude/rules/ your-project/.claude/rules/
+cp niuma-engine/CLAUDE.md your-project/CLAUDE.md
+cp -r niuma-engine/templates/zh-CN/ your-project/memory/
+```
 
-### Codex
-1. Refer to `adapters/codex.md`
+### Other Agents
+See the corresponding adapter file:
+- Codex: `adapters/codex.md`
+- Cursor: `adapters/cursor.md`
+- Aider: `adapters/aider.md`
+- Gemini CLI: `adapters/gemini-cli.md`
 
-### Cursor
-1. Refer to `adapters/cursor.md`
+## Pick by Pain Point
 
-### Aider
-1. Refer to `adapters/aider.md`
+You don't need all 29 rules. Copy only what matches your problems:
 
-### Gemini CLI
-1. Refer to `adapters/gemini-cli.md`
+| Pain Point | Install These |
+|------------|--------------|
+| AI numbers untrustworthy | anti-illusion-audit.md |
+| AI says "done" but quality poor | 10-engineering-laws.md + lifecycle-sop.md |
+| Same pitfall keeps recurring | negative-results.md |
+| AI output too verbose | anti-info-overload.md |
+| Script almost deleted wrong thing | script-safety-check.md |
+| AI silently overwrites files | no-blind-overwrite.md |
+| Multi-agent coordination chaos | agent-prompt-ironclad + subagent-strategy + agent-concurrency-fallback |
+| Full discipline system | All 29 rules in .claude/rules/ |
 
 ## Post-Installation Verification
 
-1. In a new conversation, the AI should be able to read the rules in `.claude/rules/`
-2. Test: Ask the AI "What is evidence layering?" -- it should reference Law 1
-3. Test: Give the AI an abnormally good number -- it should trigger an anti-illusion audit
+1. Start a new conversation
+2. Ask: "What is evidence layering?" — AI should reference Law 1
+3. Give the AI an abnormally good number — it should trigger an anti-illusion audit
+4. Ask: "What rules are active?" — it should list rules from .claude/rules/
