@@ -17,7 +17,7 @@ It transforms the work disciplines of human engineers -- evidence layering, anti
 | Dimension | comemo | niuma-engine |
 |-----------|--------|-------------|
 | Memory architecture | 3-layer (global/project/personal) | 3-layer + confidence labels + expiration conditions |
-| Rule system | Basic collaboration rules | 10 engineering laws + 6-stage lifecycle |
+| Rule system | Basic collaboration rules | 29 engineering rules + 6-stage lifecycle |
 | Error prevention | None | Anti-illusion audit (five questions) + negative result archiving |
 | Security mechanisms | None | Script safety checks + dual-archive + no blind overwriting |
 | Self-improvement | None | Experience -> Rule -> Skill automatic crystallization |
@@ -105,7 +105,7 @@ No need to install everything. Choose based on your pain points:
 | AI says "done" but quality is poor | `.claude/rules/10-engineering-laws.md` + `lifecycle-sop.md` |
 | Same pitfall keeps recurring | `.claude/rules/negative-results.md` |
 | AI output is too long and verbose | `.claude/rules/anti-info-overload.md` |
-| AI is different every conversation | `.claude/rules/identity-consistency.md` + `preference-memory.md` |
+| AI is different every conversation | Create your own style guide + `10-engineering-laws.md` (method consistency) |
 | Script almost deleted the wrong thing | `.claude/rules/script-safety-check.md` |
 | AI silently overwrites files | `.claude/rules/no-blind-overwrite.md` |
 
@@ -115,45 +115,41 @@ No need to install everything. Choose based on your pain points:
 
 ```
 niuma-engine/
-├── CLAUDE.md                    # Root guide (auto-loaded by Claude Code)
-├── .claude/
-│   └── rules/                   # Engineering laws and rules (auto-loaded)
-│       ├── 10-engineering-laws.md      # 10 cross-cutting engineering laws
-│       ├── lifecycle-sop.md            # 6-stage project lifecycle
-│       ├── anti-illusion-audit.md      # Anti-illusion audit (five questions)
-│       ├── negative-results.md         # Negative result archiving
-│       ├── think-before-act.md         # Think before acting
-│       ├── identity-consistency.md     # Identity consistency
-│       ├── preference-memory.md        # Preference memory
-│       ├── boundary-declaration.md     # Boundary declaration
-│       ├── memory-confidence.md        # Memory confidence and expiration
-│       ├── memory-candidate-protocol.md # Memory write confirmation protocol
-│       ├── anti-info-overload.md       # Anti-information overload
-│       ├── no-blind-overwrite.md       # No blind overwriting
-│       ├── script-safety-check.md      # Script safety check
-│       └── mcp-config-protocol.md      # MCP configuration protocol
-├── templates/
-│   ├── en/                      # English memory templates
-│   │   ├── MEMORY.md
-│   │   ├── goals.md
-│   │   └── identity.md
-│   └── zh-CN/                   # Chinese memory templates
-│       ├── MEMORY.md
-│       ├── goals.md
-│       └── identity.md
-├── adapters/                    # Agent adapters
-│   ├── codex.md
-│   ├── cursor.md
-│   ├── aider.md
-│   └── gemini-cli.md
-├── docs/
-│   ├── agent-install.md         # Agent installation guide
-│   ├── compatibility.md         # Agent compatibility
-│   └── philosophy.md            # Design philosophy
-├── LICENSE                      # MIT
-├── CONTRIBUTING.md
-├── SECURITY.md
-└── CHANGELOG.md
+├── README.md                     # You are here
+├── CHANGELOG.md                  # Version history
+├── .claude/rules/                # Core rules (auto-loaded, 29 files)
+│   ├── 10-engineering-laws.md         # 10 cross-cutting engineering laws
+│   ├── lifecycle-sop.md              # 6-stage project lifecycle
+│   ├── anti-illusion-audit.md        # Anti-illusion audit
+│   ├── think-before-act.md           # Think before acting
+│   ├── agent-concurrency-fallback.md # Agent concurrency fallback protocol
+│   ├── agent-prompt-ironclad.md      # Agent prompt iron law
+│   ├── subagent-strategy.md          # Sub-agent strategy
+│   ├── search-decision-tree.md       # Search decision tree
+│   ├── lesson-auto-update.md         # Lesson auto-update loop
+│   ├── skill-auto-activation.md      # Skill auto-activation v2.0
+│   ├── skill-route-enforcement.md    # Skill route enforcement
+│   ├── skill-execution-discipline.md # Skill execution discipline
+│   ├── skill-logging-enforcement.md  # Skill logging enforcement
+│   ├── chinese-path-safety.md        # Chinese path safety (Windows)
+│   ├── powershell-safety.md          # PowerShell safety
+│   ├── pre-action-check.md           # Pre-action checklist
+│   ├── git-recovery.md               # Git checkpoint & recovery
+│   ├── mcp-config-protocol.md        # MCP config protocol
+│   ├── competition-workspace-architecture.md  # Competition workspace arch
+│   ├── dual-write-protocol.md        # Dual-write protocol
+│   ├── no-root-rules-dir.md          # No root rules/ directory
+│   ├── negative-results.md           # Negative result archiving
+│   ├── memory-candidate-protocol.md  # Memory write confirmation
+│   ├── memory-confidence.md          # Memory confidence & expiration
+│   ├── anti-info-overload.md         # Anti-information overload
+│   ├── no-blind-overwrite.md         # No blind overwriting
+│   ├── script-safety-check.md        # Script safety check
+│   ├── boundary-declaration.md       # Boundary declaration
+│   └── _MIGRATED-TO-RULES.md         # Migration documentation
+├── templates/                    # Memory templates (zh-CN / en)
+├── adapters/                     # Agent adapters
+└── docs/                         # Design philosophy + install guide
 ```
 
 ---
