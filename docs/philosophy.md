@@ -1,47 +1,72 @@
-# 设计哲学
+# Design Philosophy (v5.0)
 
-## niuma-engine 不是什么
+## From Discipline Framework to Ecosystem
 
-❌ 不是"又一个提示词模板"
-❌ 不是"让 AI 变聪明"的魔法
-❌ 不是闭着眼装上就能用的插件
+v1.0 was a solo discipline: one person, one AI, 10 rules to stop accidents.
 
-**这是一个纪律框架。** 它不会让 AI 变聪明，但它会让 AI：
-1. **少犯错** — 每个规则堵住一个已证实的事故模式
-2. **犯了错能被抓住** — 防假象审计、证据分层、门禁文化
-3. **同样的错不犯第二次** — 负结果归档、教训闭环、规则结晶
+v4.0 became a team sport: 29 rules covering multi-agent coordination, skill routing, and cross-workspace sync.
 
-## 核心设计原则
+**v5.0 is an ecosystem.** It governs not just one AI agent, but the entire system of agents, workspaces, scheduled tasks, skills, and knowledge that form the backbone of AI-assisted work.
 
-### 1. 从事故中生长，不从设计中诞生
-niuma-engine 的每一条规则，都对应至少一次真实事故。没有"我觉得应该有这条规则"——只有"这次事故后，必须加上这条规则"。
+---
 
-### 2. 按痛点安装，不按功能安装
-用户不需要理解所有规则。只需要知道：我踩过什么坑 → 装对应的规则。
+## The Three Paradigm Shifts
 
-### 3. 纪律 > 技巧
-提示词技巧在一周内过时。工程纪律在十年内有效。niuma-engine 追求的是后者。
+### Shift 1: From Tool to Architecture
 
-### 4. 信息密度 > 信息量
-每条规则文件都追求高信息密度：具体场景 + 具体禁止行为 + 具体触发条件。拒绝泛泛的"最佳实践"。
+v4.0 treated each workspace as an independent unit. Rules were copied between workspaces. Knowledge stayed local.
 
-### 5. 负结果是一等公民
-一条没被记录的死路，会被每个后续 Agent 重新踩一遍。负结果日志和正结果同等重要。
+v5.0 introduces the **Knowledge Hub** as a single source of truth:
+- Shared rules live in one place, projected to all workspaces
+- Cross-tool lessons are dual-written: local + hub
+- A dedicated guardian (li-zhongshu) enforces synchronization
 
-## v4.0 的核心洞察
+### Shift 2: From Single Layer to Defense in Depth
 
-v1.0 解决的是"单个 AI 如何像工程师一样工作"。
-v4.0 解决的是"多个 AI Agent 如何像工程团队一样协作"。
+v4.0 had individual safety rules (no-blind-overwrite, script-safety-check, git-recovery).
 
-规则从 10 条增长到 29 条，不是膨胀，是覆盖面的质变：
-- **Agent 管理三件套**：prompt铁律 + 子agent策略 + 并发降级
-- **Skill 生态治理**：创建必注册 + 调用必记录 + 执行协议不可跳过
-- **搜索与信息纪律**：搜索决策树 + 教训闭环自动更新
-- **安全纵深**：中文路径 + PowerShell + 脚本安全 + Git恢复
+v5.0 layers them into a **three-layer protection system (R21)**:
+- L1: Archive before every modification
+- L2: Git branch isolation (agent/{date}, auto-merge after 3 days)
+- L3: Daily zip snapshots with retention policy
 
-## 与 comemo 的关系
+Each layer can fail independently. Data loss requires all three layers to fail simultaneously.
 
-niuma-engine 不替代 comemo。comemo 管记忆存储，niuma-engine 管工程纪律。两者互补：
-- 用 comemo 做记忆分层存储
-- 用 niuma-engine 的记忆置信度标签 + 失效条件做可信度管理
-- 用 niuma-engine 的负结果归档防止重复踩坑
+### Shift 3: From "Good Enough" to "Benchmarked"
+
+v4.0's skill creation guidance was: "Read 5 reference skills, then build."
+
+v5.0 adds a **quality benchmark**: every new skill must match the file structure of the ecosystem's best skills (6 top-level files + 5+ references + 1+ script + 24 quality gates).
+
+This came from a real incident: a skill was created with 4 files, while the benchmark skill had 17. It took 3 rounds of iteration to catch up. Now the benchmark enforces this from the start.
+
+---
+
+## What v5.0 Governs
+
+| Layer | What | Primary Rules |
+|-------|------|---------------|
+| File Safety | Prevent data loss from AI mistakes | 21-git-archive-ironlaw, no-blind-overwrite, git-recovery |
+| Agent Coordination | Multiple agents working without conflict | agent-prompt-ironclad, subagent-strategy, agent-concurrency-fallback |
+| Knowledge Flow | Lessons and rules shared across workspaces | knowledge-hub-architecture, lesson-auto-update, dual-write-protocol |
+| Skill Quality | Skills that actually meet production standards | skill-quality-benchmark, skill-route-enforcement, skill-execution-discipline |
+| Task Reliability | Scheduled tasks that don't silently fail | scheduled-task-dual-redundancy |
+| Engineering Discipline | How individual tasks are executed | 10-engineering-laws, lifecycle-sop, think-before-act |
+
+---
+
+## Principles That Survive All Versions
+
+1. **Rules grow from real accidents.** Every rule in this repo blocked a confirmed failure pattern. No rule was designed in isolation.
+
+2. **Negative results are first-class citizens.** Dead ends are documented, shared across workspaces via the Knowledge Hub, so no conversation repeats the same mistake.
+
+3. **Evidence over claims.** Every pass/complete/done statement carries a calibration label. Numbers without source are suspicion, not information.
+
+4. **The framework is alive.** It updates as new failure patterns are recognized in production. You are reading a snapshot, not a final answer.
+
+---
+
+> v5.0, July 2026
+> 33 rules, 5 workspaces, 128+ skills, 6 scheduled tasks
+> From discipline to ecosystem.
