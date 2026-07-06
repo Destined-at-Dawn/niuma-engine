@@ -1,4 +1,4 @@
-# Startup Sequence (Every Conversation — Mandatory)
+# Startup Sequence (Every Conversation -- Mandatory)
 
 | Step | Action | When |
 |------|--------|------|
@@ -6,12 +6,18 @@
 | 2 | Read `memory/long-term.md` | First conversation / after corrections |
 | 3 | Read `memory/{today}.md` | First conversation of the day |
 | 4 | Read `EVOLUTION.md` | Match pending tasks -> execute first |
+| 5 | **R21 Three-Layer Protection**: verify agent branch + archive ready + pre-modify archive | Every conversation |
+| 6 | **Knowledge Hub**: read cross-workspace lessons (last 7 days) | Every conversation |
 
 > **Quick Mode**: If the user message contains a specific trigger word you've defined, skip startup and process directly. High-risk operations still require reading long-term.md.
 
 ---
 
 # Project Rules
+
+## R21 -- Three-Layer File Protection (CRITICAL)
+**Before any file modification or deletion**: archive -> agent/{date} branch -> daily zip snapshot.
+-> See `.claude/rules/21-git-archive-ironlaw.md`
 
 ## Think Before Act
 New problems require research before action. Never substitute "I think" for best practice.
@@ -66,6 +72,18 @@ Every deliverable must include a three-column boundary list: confirmed / referen
 Commit a checkpoint before any file deletion. Recovery must be possible within 30 seconds.
 -> See `.claude/rules/git-recovery.md`
 
+## Knowledge Hub Architecture
+All workspaces share a single source of truth. Cross-tool lessons must be dual-written.
+-> See `.claude/rules/knowledge-hub-architecture.md`
+
+## Scheduled Task Dual Redundancy
+Critical periodic tasks run on two independent scheduling systems. Mutual fallback.
+-> See `.claude/rules/scheduled-task-dual-redundancy.md`
+
+## Skill Quality Benchmark
+New skills must meet the standard: 6 top-level files + 5+ references + 1+ scripts + 24 quality gates.
+-> See `.claude/rules/skill-quality-benchmark.md`
+
 ---
 
 # Compact Instructions
@@ -78,11 +96,13 @@ Commit a checkpoint before any file deletion. Recovery must be possible within 3
 5. Error root causes and fixes
 6. Task progress and next steps
 7. User correction verbatim
+8. **R21 status**: agent branch + last archive + last zip snapshot
 
 ## After Compression Recovery
 1. Re-read CLAUDE.md + .claude/rules/ (automatic)
 2. Actively re-read memory/long-term.md + memory/{today}.md
 3. Check for unfinished tasks
+4. **Verify R21 protection status** (branch, archive, snapshot)
 
 ---
 
@@ -90,7 +110,10 @@ Commit a checkpoint before any file deletion. Recovery must be possible within 3
 
 | Category | Rules | Purpose |
 |----------|-------|---------|
-| Core Engineering Laws | 10-engineering-laws, lifecycle-sop | Foundation — always active |
+| Core Engineering Laws | 10-engineering-laws, lifecycle-sop | Foundation -- always active |
+| File Protection (v5.0 NEW) | 21-git-archive-ironlaw | Three-layer: archive + git branch + daily zip |
+| Cross-Tool Governance (v5.0 NEW) | knowledge-hub-architecture, scheduled-task-dual-redundancy | Single truth source + dual redundancy |
+| Skill Quality (v5.0 NEW) | skill-quality-benchmark | New skills meet benchmark standard |
 | Agent Management | agent-prompt-ironclad, subagent-strategy, agent-concurrency-fallback | Multi-agent coordination |
 | Search & Info | search-decision-tree, lesson-auto-update, anti-info-overload | Information discipline |
 | Safety & Ops | script-safety-check, no-blind-overwrite, chinese-path-safety, powershell-safety, pre-action-check, git-recovery, mcp-config-protocol | Prevention of known accidents |
@@ -101,4 +124,5 @@ Commit a checkpoint before any file deletion. Recovery must be possible within 3
 ---
 
 > This framework is alive. Rules grow from real accidents. Each rule blocks one confirmed failure pattern.
+> v5.0: 33 rules. From single-tool discipline to cross-tool ecosystem.
 > You are looking at a snapshot. The framework updates as new patterns are recognized in production.
