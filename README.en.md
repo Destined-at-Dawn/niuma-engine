@@ -1,6 +1,6 @@
 # niuma-engine v5.0
 
-**From single-tool discipline to cross-tool ecosystem. 33 rules grown from real accidents.**
+**From single-tool discipline to cross-tool ecosystem. 34 rules grown from real accidents.**
 
 English | [中文](README.md)
 
@@ -11,7 +11,7 @@ English | [中文](README.md)
 | Dimension | v4.0 (2026-06) | v5.0 (2026-07) |
 |-----------|---------------|---------------|
 | Governance Scope | Single tool (Claude Code) | Cross-tool (AI + OS scheduled tasks + Knowledge Hub) |
-| Rules | 29 | **33** |
+| Rules | 29 | **34** |
 | File Protection | Single-layer rules | **Three-layer system** (archive + git branch + daily zip) |
 | Skill Quality | "Read 5 references" | **Benchmark standard** (6 top files + 5+ refs + 1+ script + 24 gates) |
 | Knowledge | Per-workspace independent | **Knowledge Hub** (single truth source + sync-all + cross-workspace lessons) |
@@ -87,7 +87,8 @@ Five workspaces, one brain.
 | AI says "done" but quality is poor | `10-engineering-laws.md` + `lifecycle-sop.md` |
 | Same pitfall keeps recurring | `negative-results.md` |
 | Multiple agents overwrite each other | `agent-prompt-ironclad.md` + `subagent-strategy.md` |
-| Full discipline system from scratch | Install all `.claude/rules/` (33 rules) |
+| Full discipline system from scratch | Install all `.claude/rules/` (34 rules) |
+| Enrolled in an AI course, don't know how to keep progressing | `docs/student-pathway/` (6-tier growth map, L0-L5) |
 
 ### Install
 
@@ -108,13 +109,15 @@ Supported agents: Claude Code (primary) / Codex / Cursor / Aider / Gemini CLI
 niuma-engine/
 ├── README.md                     <-- You are here
 ├── CHANGELOG.md                  <-- Version history
-├── .claude/rules/                <-- Core rules (33 files, auto-loaded)
+├── .claude/rules/                <-- Core rules (34 files, auto-loaded)
 │   ├── 10-engineering-laws.md            Ten cross-cutting engineering laws
 │   ├── 21-git-archive-ironlaw.md         Three-layer file protection (v5.0 NEW)
 │   ├── knowledge-hub-architecture.md     Knowledge Hub architecture (v5.0 NEW)
 │   ├── scheduled-task-dual-redundancy.md Dual redundancy for tasks (v5.0 NEW)
 │   ├── skill-quality-benchmark.md        Skill quality benchmark (v5.0 NEW)
-│   ├── (remaining 29 rules...)
+│   ├── student-onboarding.md             Student onboarding, self-gating (v5.0 NEW)
+│   ├── (remaining 28 rules...)
+├── docs/student-pathway/         <-- Student 6-tier growth map (v5.0 NEW, L0-L5)
 ├── templates/                    <-- Memory templates (zh-CN / en)
 ├── adapters/                     <-- Agent adapters
 └── docs/                         <-- Design philosophy + install guide
@@ -128,7 +131,7 @@ niuma-engine/
 |---------|------|-------------|
 | v1.0 | 2026-05 | 10 engineering laws + 6-stage SOP, single-tool discipline |
 | v4.0 | 2026-06 | 29 rules, multi-agent + skill routing + search decision trees |
-| **v5.0** | **2026-07** | **33 rules, Knowledge Hub + 3-layer protection + quality benchmark + dual redundancy** |
+| **v5.0** | **2026-07** | **34 rules, Knowledge Hub + 3-layer protection + quality benchmark + dual redundancy + student growth map** |
 
 ---
 
@@ -140,4 +143,4 @@ MIT -- use freely, modify freely, distribute freely.
 
 > **Making AI work like an engineer, not like a confident intern.**
 >
-> v5.0: From single-tool discipline to cross-tool ecosystem. 33 rules. Each one is a tombstone of a real accident.
+> v5.0: From single-tool discipline to cross-tool ecosystem. 34 rules. Each one is a tombstone of a real accident.

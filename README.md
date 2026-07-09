@@ -11,7 +11,7 @@
 | 维度 | v4.0 (2026-06) | v5.0 (2026-07) |
 |------|---------------|---------------|
 | 治理范围 | 单工具（Claude Code） | 跨工具（AI + OS 定时任务 + 知识中枢） |
-| 规则数 | 29 条 | **33 条** |
+| 规则数 | 29 条 | **34 条** |
 | 文件保护 | 单层规则（no-blind-overwrite） | **三层体系**（归档 + Git分支隔离 + 每日Zip） |
 | Skill 质量 | "读5个参考再建" | **对标标准**（6顶层文件 + 5+ refs + 1+ script + 24项门禁） |
 | 知识管理 | 工作区各自独立 | **知识中枢**（单一真相源 + 一改全改 + 跨区教训共享） |
@@ -87,7 +87,8 @@ L3 每日Zip快照 -> 每天23:59全量打包，7天内全保留
 | AI 说"做完了"但质量不行 | `10-engineering-laws.md` + `lifecycle-sop.md` |
 | 同一个坑反复踩 | `negative-results.md` |
 | 多 Agent 互相覆盖/冲突 | `agent-prompt-ironclad.md` + `subagent-strategy.md` |
-| 想从零搭建完整纪律体系 | 全装 `.claude/rules/`（共33条） |
+| 想从零搭建完整纪律体系 | 全装 `.claude/rules/`（共34条） |
+| 报了 AI 课，不知道怎么持续进阶 | `docs/student-pathway/`（六层成长路线图 L0-L5） |
 
 ### 安装
 
@@ -110,13 +111,15 @@ cd niuma-engine
 niuma-engine/
 ├── README.md                     <-- 你在这
 ├── CHANGELOG.md                  <-- 版本历史
-├── .claude/rules/                <-- 核心规则（Claude Code 自动加载，共 33 条）
+├── .claude/rules/                <-- 核心规则（Claude Code 自动加载，共 34 条）
 │   ├── 10-engineering-laws.md            十条贯穿性工程法则
 │   ├── 21-git-archive-ironlaw.md         三层文件保护铁律（v5.0 NEW）
 │   ├── knowledge-hub-architecture.md     知识中枢架构规则（v5.0 NEW）
 │   ├── scheduled-task-dual-redundancy.md 定时任务双冗余规则（v5.0 NEW）
 │   ├── skill-quality-benchmark.md        Skill质量对标规则（v5.0 NEW）
-│   ├── (其余 29 条规则...)
+│   ├── student-onboarding.md             学员引导铁律，自门控（v5.0 NEW）
+│   ├── (其余 28 条规则...)
+├── docs/student-pathway/         <-- 学员六层成长路线图（v5.0 NEW，L0-L5）
 ├── templates/                    <-- 记忆模板（中/英）
 ├── adapters/                     <-- 各 Agent 适配器
 └── docs/                         <-- 设计哲学 + 安装指南
@@ -130,7 +133,7 @@ niuma-engine/
 |------|------|---------|
 | v1.0 | 2026-05 | 10条工程法则 + 6阶段SOP，单工具纪律 |
 | v4.0 | 2026-06 | 29条规则，多Agent协作 + Skill路由 + 搜索决策树 |
-| **v5.0** | **2026-07** | **33条规则，知识中枢 + 三层保护 + 质量对标 + 双冗余** |
+| **v5.0** | **2026-07** | **34条规则，知识中枢 + 三层保护 + 质量对标 + 双冗余 + 学员成长路线图** |
 
 ---
 
@@ -151,4 +154,4 @@ MIT -- 用，改，发，随你。
 
 > **让 AI 像工程师一样工作，而不是像实习生一样自信。**
 >
-> v5.0: 从单工具纪律到跨工具生态系统。33 条规则，每一块都是一次事故的墓碑。
+> v5.0: 从单工具纪律到跨工具生态系统。34 条规则，每一块都是一次事故的墓碑。

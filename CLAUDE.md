@@ -84,6 +84,10 @@ Critical periodic tasks run on two independent scheduling systems. Mutual fallba
 New skills must meet the standard: 6 top-level files + 5+ references + 1+ scripts + 24 quality gates.
 -> See `.claude/rules/skill-quality-benchmark.md`
 
+## Student Onboarding (v5.0 NEW, self-gating)
+Activates only when `STUDENT-GUIDE.md` exists in workspace root. Term bridging, next-step hooks, no overreach tasks, no proactive architecture exposure.
+-> See `.claude/rules/student-onboarding.md`, `docs/student-pathway/`
+
 ---
 
 # Compact Instructions
@@ -114,6 +118,7 @@ New skills must meet the standard: 6 top-level files + 5+ references + 1+ script
 | File Protection (v5.0 NEW) | 21-git-archive-ironlaw | Three-layer: archive + git branch + daily zip |
 | Cross-Tool Governance (v5.0 NEW) | knowledge-hub-architecture, scheduled-task-dual-redundancy | Single truth source + dual redundancy |
 | Skill Quality (v5.0 NEW) | skill-quality-benchmark | New skills meet benchmark standard |
+| Student Onboarding (v5.0 NEW) | student-onboarding | Self-gating layer for AI-course students; see docs/student-pathway/ |
 | Agent Management | agent-prompt-ironclad, subagent-strategy, agent-concurrency-fallback | Multi-agent coordination |
 | Search & Info | search-decision-tree, lesson-auto-update, anti-info-overload | Information discipline |
 | Safety & Ops | script-safety-check, no-blind-overwrite, chinese-path-safety, powershell-safety, pre-action-check, git-recovery, mcp-config-protocol | Prevention of known accidents |
@@ -124,5 +129,5 @@ New skills must meet the standard: 6 top-level files + 5+ references + 1+ script
 ---
 
 > This framework is alive. Rules grow from real accidents. Each rule blocks one confirmed failure pattern.
-> v5.0: 33 rules. From single-tool discipline to cross-tool ecosystem.
+> v5.0: 34 rules. From single-tool discipline to cross-tool ecosystem.
 > You are looking at a snapshot. The framework updates as new patterns are recognized in production.
