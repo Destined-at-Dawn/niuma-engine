@@ -1,146 +1,84 @@
-# niuma-engine v5.0
+# niuma-engine
 
-**From single-tool discipline to cross-tool ecosystem. 34 rules grown from real accidents.**
+> **An engineering-discipline framework for AI coding agents: reusable rules and adapters, not an agent runtime.**
 
-English | [中文](README.md)
+English · [中文](README.md) · [Capabilities](docs/capabilities.md) · [Install](docs/agent-install.md) · [Compatibility](docs/compatibility.md) · [Contributing](CONTRIBUTING.md)
 
----
+niuma-engine turns recurring failure modes in AI-assisted development—blind file overwrites, weak verification, suspicious metrics, multi-agent conflicts, and repeated dead ends—into reviewable Markdown rules and agent-integration guidance.
 
-## The v5.0 Leap
+## What it is / is not
 
-| Dimension | v4.0 (2026-06) | v5.0 (2026-07) |
-|-----------|---------------|---------------|
-| Governance Scope | Single tool (Claude Code) | Cross-tool (AI + OS scheduled tasks + Knowledge Hub) |
-| Rules | 29 | **34** |
-| File Protection | Single-layer rules | **Three-layer system** (archive + git branch + daily zip) |
-| Skill Quality | "Read 5 references" | **Benchmark standard** (6 top files + 5+ refs + 1+ script + 24 gates) |
-| Knowledge | Per-workspace independent | **Knowledge Hub** (single truth source + sync-all + cross-workspace lessons) |
-| Scheduled Tasks | Single scheduler | **Dual redundancy** (AI + OS independent scheduling, mutual fallback) |
-| Multi-Agent | Agent 3-elements + isolation | **+ Workflow orchestration** (pipeline/parallel + phase gates) |
+| It is | It is not |
+|---|---|
+| 34 composable engineering-discipline rules | An executable agent runtime, CLI, or background service |
+| A Claude Code rules directory plus integration guidance for Codex, Cursor, Aider, and Gemini CLI | A plug-in that automatically creates backups, schedules jobs, or merges branches |
+| An open framework for discussing and improving AI engineering workflows | Prompt magic that makes a model smarter |
 
----
+See [Capabilities](docs/capabilities.md) for the boundary between shipped assets, reference architectures, and automation that you must implement in your own environment.
 
-## What This Is NOT
+## Try it in 3 minutes: prevent blind overwrites
 
-[CRITICAL] NOT another prompt template
-[CRITICAL] NOT magic to make AI smarter
-[CRITICAL] NOT a plug-and-play plugin
-
-**This is a discipline framework.** It won't make AI smarter, but it will make AI make fewer mistakes, catch mistakes when they happen, and never repeat the same mistake twice.
-
----
-
-## Three-Layer File Protection (v5.0 Core Addition)
-
-```
-L1 Pre-modification Archive --> Copy original to archive directory before any file change
-L2 Git Branch Isolation ----> All AI changes go through agent/{date} branch, 3-day auto-merge, no direct main push
-L3 Daily Zip Snapshot -------> Full backup at 23:59 daily, full retention for 7 days
-```
-
-Each layer can fail independently. Data loss requires all three layers to fail simultaneously.
-
----
-
-## Knowledge Hub Architecture (v5.0 Core Addition)
-
-```
-Knowledge Hub (single source of truth)
-├── Shared Rules --> Edit once, li-sync auto-syncs to all workspaces
-├── Cross-Workspace Lessons --> One mistake, visible to all workspaces
-├── SOP Library --> No SOP? Check the Hub first
-└── Global Registry --> Metadata index for workspaces/skills/rules
-```
-
-Five workspaces, one brain.
-
----
-
-## 10 Core Engineering Laws (since v1.0)
-
-| Law | One-liner |
-|-----|-----------|
-| 1. Evidence Layering | Every "pass" carries a calibration label |
-| 2. Anti-Illusion Audit | High scores first audit how they were produced |
-| 3. Empirical Testing First | Scan and verify, don't assume monotonicity |
-| 4. Tool Freedom | Restrain manual hints, let tools work |
-| 5. Cross-Boundary Validation | Validate format/encoding/units at system seams |
-| 6. Isolation Contracts | Strict write-zone isolation for multi-agent work |
-| 7. Negative Result Archiving | Dead ends must be documented |
-| 8. Gate Culture | "Done" = passed all gates |
-| 9. Recognize Structural Walls | Plateau = change angle, ceiling = stop |
-| 10. Rule Crystallization | Experience -> Rule -> Skill, compound interest |
-
----
-
-## Quick Start
-
-### Install by Pain Point
-
-| Your Pain Point | What to Install |
-|----------------|----------------|
-| Worried AI will mess up / lose files | `21-git-archive-ironlaw.md` + `no-blind-overwrite.md` |
-| AI's numbers aren't trustworthy | `anti-illusion-audit.md` |
-| Multiple workspaces are chaotic | `knowledge-hub-architecture.md` |
-| Scheduled tasks silently fail | `scheduled-task-dual-redundancy.md` |
-| New skills have inconsistent quality | `skill-quality-benchmark.md` |
-| AI says "done" but quality is poor | `10-engineering-laws.md` + `lifecycle-sop.md` |
-| Same pitfall keeps recurring | `negative-results.md` |
-| Multiple agents overwrite each other | `agent-prompt-ironclad.md` + `subagent-strategy.md` |
-| Full discipline system from scratch | Install all `.claude/rules/` (34 rules) |
-| Enrolled in an AI course, don't know how to keep progressing | `docs/student-pathway/` (6-tier growth map, L0-L5) |
-
-### Install
+For Claude Code, install one minimal rule in a test project:
 
 ```bash
 git clone https://github.com/Destined-at-Dawn/niuma-engine.git
-cd niuma-engine
+mkdir -p YOUR_PROJECT/.claude/rules
+cp niuma-engine/.claude/rules/no-blind-overwrite.md YOUR_PROJECT/.claude/rules/
 ```
 
-Let your AI agent read `docs/agent-install.md`. **Let AI install itself.**
+Start a new agent session and ask it to modify an existing file. It should read the file first and describe the planned change before writing. The [installation guide](docs/agent-install.md) includes verification steps, Windows commands, and setup instructions for other agents.
 
-Supported agents: Claude Code (primary) / Codex / Cursor / Aider / Gemini CLI
+> This is a rules framework. Actual behavior depends on the tool, project configuration, and your final review. Test it in a disposable project before adopting it for important work.
 
----
+## Choose rules by pain point
 
-## Repository Structure
+| Pain point | Start with |
+|---|---|
+| AI may overwrite or delete existing files | `no-blind-overwrite.md`, `script-safety-check.md` |
+| AI reports implausibly good numbers | `anti-illusion-audit.md` |
+| AI says “done” without enough verification | `10-engineering-laws.md`, `lifecycle-sop.md` |
+| The same failure keeps recurring | `negative-results.md` |
+| Multiple agents conflict | `agent-prompt-ironclad.md`, `subagent-strategy.md` |
+| You want the full rule set | `.claude/rules/` (34 rule files) |
 
-```
+## Support status
+
+| Agent | Integration | Status |
+|---|---|---|
+| Claude Code | `.claude/rules/` | Primary target |
+| Codex | `AGENTS.md` plus copied rules | Integration example provided |
+| Cursor | `.cursor/rules` | Integration guidance provided |
+| Aider | `.aider.conf.yml` | Integration guidance provided |
+| Gemini CLI | `GEMINI.md` | Integration guidance provided |
+
+“Integration guidance provided” is not a guarantee of continuous compatibility. Check the [compatibility matrix](docs/compatibility.md) for scope and limitations.
+
+## Repository layout
+
+```text
 niuma-engine/
-├── README.md                     <-- You are here
-├── CHANGELOG.md                  <-- Version history
-├── .claude/rules/                <-- Core rules (34 files, auto-loaded)
-│   ├── 10-engineering-laws.md            Ten cross-cutting engineering laws
-│   ├── 21-git-archive-ironlaw.md         Three-layer file protection (v5.0 NEW)
-│   ├── knowledge-hub-architecture.md     Knowledge Hub architecture (v5.0 NEW)
-│   ├── scheduled-task-dual-redundancy.md Dual redundancy for tasks (v5.0 NEW)
-│   ├── skill-quality-benchmark.md        Skill quality benchmark (v5.0 NEW)
-│   ├── student-onboarding.md             Student onboarding, self-gating (v5.0 NEW)
-│   ├── (remaining 28 rules...)
-├── docs/student-pathway/         <-- Student 6-tier growth map (v5.0 NEW, L0-L5)
-├── templates/                    <-- Memory templates (zh-CN / en)
-├── adapters/                     <-- Agent adapters
-└── docs/                         <-- Design philosophy + install guide
+├── .claude/rules/       # 34 core Markdown rules
+├── adapters/            # Integration examples per agent
+├── docs/                # Install, capabilities, compatibility, and philosophy
+├── templates/           # Memory templates in Chinese and English
+├── CONTRIBUTING.md
+├── SECURITY.md
+└── LICENSE              # MIT
 ```
 
----
+## Contributing and feedback
 
-## Version History
+- Usage questions, ideas, and experience reports: GitHub Discussions (once enabled) or a structured Issue.
+- Reproducible bugs, documentation problems, and rule proposals: use the Issue templates.
+- Security reports: read [SECURITY.md](SECURITY.md); do not disclose details in a public Issue.
+- New adapters, reproducible public cases, rule improvements, validation methods, and translations are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-| Version | Date | Core Change |
-|---------|------|-------------|
-| v1.0 | 2026-05 | 10 engineering laws + 6-stage SOP, single-tool discipline |
-| v4.0 | 2026-06 | 29 rules, multi-agent + skill routing + search decision trees |
-| **v5.0** | **2026-07** | **34 rules, Knowledge Hub + 3-layer protection + quality benchmark + dual redundancy + student growth map** |
+## Version and evolution
 
----
+The current public ruleset is **v5.0.0 / 34 rule files**. See [CHANGELOG.md](CHANGELOG.md) for history. The next release will include GitHub Release notes and migration guidance.
 
 ## License
 
-MIT -- use freely, modify freely, distribute freely.
+[MIT](LICENSE)
 
----
-
-> **Making AI work like an engineer, not like a confident intern.**
->
-> v5.0: From single-tool discipline to cross-tool ecosystem. 34 rules. Each one is a tombstone of a real accident.
+> Make AI work like an engineer: understand the boundary before changing, verify the evidence before declaring completion.
