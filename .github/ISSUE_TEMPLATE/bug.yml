@@ -1,0 +1,40 @@
+name: Bug report
+about: Report a reproducible problem in a rule, adapter, or document
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a reproducible problem. Do not disclose vulnerabilities, credentials, personal data, or private source code here; see SECURITY.md for security reporting.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: State the observed behavior and its impact.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the installed rule files, agent, configuration, and minimal steps.
+      placeholder: |
+        1. Install ...
+        2. Start a new session ...
+        3. Ask the agent to ...
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Agent name/version, OS, and relevant configuration
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Add sanitized logs, screenshots, or links. Remove sensitive data.
