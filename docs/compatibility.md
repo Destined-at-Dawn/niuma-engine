@@ -1,33 +1,28 @@
-# Agent Compatibility
+# Agent compatibility
 
-| Agent | Integration Method | Auto Load | Rule Count | Status |
-|-------|-------------------|-----------|------------|--------|
-| Claude Code | `.claude/rules/` | Automatic | 29 rules | Primary Target |
-| Codex | `AGENTS.md` bridge | Automatic | Configurable | Supported |
-| Cursor | `.cursor/rules` | Automatic | 29 rules (symlink) | Supported |
-| Aider | `.aider.conf.yml` | Manual | Configurable | Supported |
-| Gemini CLI | `GEMINI.md` | Automatic | Configurable | Supported |
+**Document review date:** 2026-08-11  
+**Ruleset:** v5.0.0 / 34 Markdown rule files
 
-## Rule Loading Priority
+| Agent | Integration method | Status | Verification scope |
+|---|---|---|---|
+| Claude Code | `.claude/rules/` and optional `CLAUDE.md` | Primary target | Rule directory and root guide are shipped; verify in a clean project. |
+| Codex | `AGENTS.md` that references copied rule files | Documented integration | A minimal example is in `adapters/codex/AGENTS.md.example`. |
+| Cursor | `.cursor/rules` | Documented integration | Follow `adapters/cursor.md`; validate against your Cursor version. |
+| Aider | `.aider.conf.yml` | Documented integration | Follow `adapters/aider.md`; rule loading is configuration-dependent. |
+| Gemini CLI | `GEMINI.md` | Documented integration | Follow `adapters/gemini-cli.md`; validate against your Gemini CLI version. |
 
-Universal across all agents:
-1. User direct instructions (highest priority)
-2. Project root guide (CLAUDE.md / AGENTS.md / GEMINI.md)
-3. Rule files (.claude/rules/) — 29 files, ~124KB
-4. Agent default behavior (lowest priority)
+## Loading precedence
 
-## Rule Categories
+Agent-specific precedence can change. In general, direct user instructions override project instructions, which override referenced rule files. Treat this table as integration guidance rather than a guarantee of identical behavior across tools.
 
-| Category | Count | Key Files |
-|----------|-------|-----------|
-| Core Engineering Laws | 2 | 10-engineering-laws, lifecycle-sop |
-| Agent Management | 3 | agent-prompt-ironclad, subagent-strategy, agent-concurrency-fallback |
-| Search & Info Discipline | 3 | search-decision-tree, lesson-auto-update, anti-info-overload |
-| Safety & Operations | 7 | script-safety-check, no-blind-overwrite, chinese-path-safety, powershell-safety, pre-action-check, git-recovery, mcp-config-protocol |
-| Memory & Quality | 5 | memory-candidate-protocol, memory-confidence, negative-results, anti-illusion-audit, boundary-declaration |
-| Architecture & Governance | 5 | competition-workspace-architecture, dual-write-protocol, no-root-rules-dir, _MIGRATED-TO-RULES |
-| Skill Ecosystem | 4 | skill-auto-activation, skill-route-enforcement, skill-execution-discipline, skill-logging-enforcement |
+## Rule categories
 
-## Memory System Compatibility
+| Category | Examples |
+|---|---|
+| Engineering discipline | `10-engineering-laws.md`, `lifecycle-sop.md`, `think-before-act.md` |
+| File and script safety | `no-blind-overwrite.md`, `script-safety-check.md`, `git-recovery.md` |
+| Evidence and quality | `anti-illusion-audit.md`, `boundary-declaration.md`, `negative-results.md` |
+| Agent coordination | `agent-prompt-ironclad.md`, `subagent-strategy.md` |
+| Reference architectures | `21-git-archive-ironlaw.md`, `knowledge-hub-architecture.md`, `scheduled-task-dual-redundancy.md` |
 
-niuma-engine's memory system is based on Markdown files. All agents can read/write `.md` files under `memory/`.
+See [Capabilities](capabilities.md) for the distinction between shipped rules, documented integrations, and reference architectures.
