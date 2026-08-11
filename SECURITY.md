@@ -1,13 +1,18 @@
-# Security Policy
+# Security policy
 
-## Reporting Security Issues
+## Reporting a vulnerability
 
-If you discover a security issue, please report it via GitHub Issues.
+Please do **not** disclose security-sensitive details in a public Issue, Discussion, pull request, or commit.
 
-## Security Design
+1. Use GitHub's **Report a vulnerability** flow when it is enabled for this repository.
+2. If that private reporting flow is unavailable, contact the repository maintainer through a private contact method published on the maintainer's GitHub profile. Include a concise description, affected files or versions, reproduction steps, impact, and any suggested mitigation.
 
-niuma-engine's security mechanisms include:
-- Script safety checks (preventing accidental deletion of system files)
-- Dual-archive iron law (must back up before deletion)
-- No blind overwriting (must read before modifying)
-- Memory write confirmation (preventing unconfirmed writes)
+Maintainers should enable GitHub Private Vulnerability Reporting before promoting the repository broadly.
+
+## Scope
+
+niuma-engine is primarily a documentation and rules repository. Security reports may still apply to any future automation scripts, GitHub Actions workflows, installers, templates, or dependency updates included in the repository.
+
+## Response expectations
+
+The maintainer will acknowledge a well-formed report, investigate the issue, and coordinate disclosure after a fix or mitigation is available. Timelines depend on severity and maintainer availability.
