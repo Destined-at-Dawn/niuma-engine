@@ -1,7 +1,12 @@
 # Changelog
 
+## Unreleased
 
-# Changelog
+### Changed
+- Reframed public documentation around shipped rules, documented integrations, and reference architectures.
+- Added a reproducible minimal-install path and a current Codex AGENTS.md example.
+- Added community-health files, issue forms, a PR template, and documentation consistency checks.
+
 
 ## v5.0.0 (2026-07-06) -- 从单工具纪律到跨工具生态系统
 
@@ -102,3 +107,4 @@
 - Boundary declaration rules
 - Claude Code / Codex / Cursor / Aider / Gemini CLI adapters
 - Chinese and English memory templates
+

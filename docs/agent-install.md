@@ -1,56 +1,64 @@
-# Agent Installation Guide
+# Agent installation guide
 
-## Automatic Installation (Recommended)
+niuma-engine is modular. Start with one rule in a disposable project, validate the behavior you expect, then add more rules deliberately.
 
-Clone the repo, then tell your AI agent:
+## 1. Choose a rule
 
-```
-Read CLAUDE.md and the .claude/rules/ directory.
-Help me integrate niuma-engine into this project.
-Show me the installation plan. Do not overwrite anything without my approval.
-```
+| Goal | Start with |
+|---|---|
+| Prevent blind overwrites | `no-blind-overwrite.md` |
+| Check suspicious metrics | `anti-illusion-audit.md` |
+| Require evidence before “done” | `10-engineering-laws.md`, `lifecycle-sop.md` |
+| Coordinate multiple agents | `agent-prompt-ironclad.md`, `subagent-strategy.md` |
 
-The AI will:
-1. Read the startup sequence in CLAUDE.md
-2. Load all 29 rules from .claude/rules/
-3. Check for existing memory files
-4. Propose an integration plan
+## 2. Install it in a test project
 
-## Manual Installation
+Clone this repository first:
 
-### Claude Code (Primary Target)
 ```bash
 git clone https://github.com/Destined-at-Dawn/niuma-engine.git
-cp -r niuma-engine/.claude/rules/ your-project/.claude/rules/
-cp niuma-engine/CLAUDE.md your-project/CLAUDE.md
-cp -r niuma-engine/templates/zh-CN/ your-project/memory/
 ```
 
-### Other Agents
-See the corresponding adapter file:
-- Codex: `adapters/codex.md`
-- Cursor: `adapters/cursor.md`
-- Aider: `adapters/aider.md`
-- Gemini CLI: `adapters/gemini-cli.md`
+### Claude Code
 
-## Pick by Pain Point
+```bash
+mkdir -p YOUR_PROJECT/.claude/rules
+cp niuma-engine/.claude/rules/no-blind-overwrite.md YOUR_PROJECT/.claude/rules/
+```
 
-You don't need all 29 rules. Copy only what matches your problems:
+Windows PowerShell:
 
-| Pain Point | Install These |
-|------------|--------------|
-| AI numbers untrustworthy | anti-illusion-audit.md |
-| AI says "done" but quality poor | 10-engineering-laws.md + lifecycle-sop.md |
-| Same pitfall keeps recurring | negative-results.md |
-| AI output too verbose | anti-info-overload.md |
-| Script almost deleted wrong thing | script-safety-check.md |
-| AI silently overwrites files | no-blind-overwrite.md |
-| Multi-agent coordination chaos | agent-prompt-ironclad + subagent-strategy + agent-concurrency-fallback |
-| Full discipline system | All 29 rules in .claude/rules/ |
+```powershell
+New-Item -ItemType Directory -Force YOUR_PROJECT\.claude\rules
+Copy-Item niuma-engine\.claude\rules\no-blind-overwrite.md YOUR_PROJECT\.claude\rules\
+```
 
-## Post-Installation Verification
+To adopt the whole ruleset, copy the directory after reviewing its contents:
 
-1. Start a new conversation
-2. Ask: "What is evidence layering?" — AI should reference Law 1
-3. Give the AI an abnormally good number — it should trigger an anti-illusion audit
-4. Ask: "What rules are active?" — it should list rules from .claude/rules/
+```bash
+cp -r niuma-engine/.claude/rules YOUR_PROJECT/.claude/
+```
+
+### Codex
+
+Follow [the Codex adapter](../adapters/codex.md). It includes a minimal `AGENTS.md` example and keeps the rules in a visible project-local directory.
+
+### Other agents
+
+- Cursor: [`adapters/cursor.md`](../adapters/cursor.md)
+- Aider: [`adapters/aider.md`](../adapters/aider.md)
+- Gemini CLI: [`adapters/gemini-cli.md`](../adapters/gemini-cli.md)
+
+## 3. Smoke-test the behavior
+
+Start a fresh agent session and run these checks in a throwaway project:
+
+1. Ask the agent to modify an existing file. With `no-blind-overwrite.md` active, it should inspect the current content before editing.
+2. Give the agent an unusually strong metric and ask for a conclusion. With `anti-illusion-audit.md` active, it should ask how the metric was produced.
+3. Ask which niuma-engine rules are active. The agent should identify only the files you installed.
+
+If the behavior differs, verify that the target tool loads the configured project instructions. Integration mechanics differ by agent and version.
+
+## 4. Expand carefully
+
+Read [Capabilities](capabilities.md) before adopting architecture-oriented rules. The repository ships policies and integration guidance; it does not ship a universal backup, sync, or scheduler service.

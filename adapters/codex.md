@@ -1,34 +1,25 @@
-# Codex Adapter
+# Codex adapter
 
-## Integration Method
+Codex reads project instructions from `AGENTS.md`. Keep the niuma-engine rules inside the project so their scope is visible and reviewable.
 
-Codex uses `AGENTS.md` as its root guide.
+## Minimal setup
 
-### Quick Integration
+1. Copy the rules you want into your project:
 
-1. Create `AGENTS.md` in the project root, referencing the full rule set:
-
-```markdown
-> Engineering framework: This project uses niuma-engine v4.0 (29 rules).
-> All rule files are in the .claude/rules/ directory.
-> See CLAUDE.md for the startup sequence and core principles.
+```bash
+mkdir -p YOUR_PROJECT/.niuma-engine/rules
+cp niuma-engine/.claude/rules/no-blind-overwrite.md YOUR_PROJECT/.niuma-engine/rules/
+cp niuma-engine/.claude/rules/think-before-act.md YOUR_PROJECT/.niuma-engine/rules/
+cp niuma-engine/.claude/rules/anti-illusion-audit.md YOUR_PROJECT/.niuma-engine/rules/
 ```
 
-2. Append rule references to `AGENTS.md`:
+2. Copy [`adapters/codex/AGENTS.md.example`](codex/AGENTS.md.example) to `YOUR_PROJECT/AGENTS.md` and adjust the rule list to match the files you copied.
 
-```markdown
-## Engineering Rules (niuma-engine v4.0)
-- Core: .claude/rules/10-engineering-laws.md (10 cross-cutting laws)
-- Lifecycle: .claude/rules/lifecycle-sop.md (6-stage project lifecycle)
-- Audit: .claude/rules/anti-illusion-audit.md (anti-illusion five questions)
-- Archive: .claude/rules/negative-results.md (dead end archiving)
-- Safety: .claude/rules/script-safety-check.md + no-blind-overwrite.md
-- Agents: .claude/rules/agent-prompt-ironclad.md + subagent-strategy.md + agent-concurrency-fallback.md
-- Search: .claude/rules/search-decision-tree.md + lesson-auto-update.md
-- Full set: 29 rules in .claude/rules/
-```
+3. Start a new Codex session and use the smoke tests in [the installation guide](../docs/agent-install.md).
 
-### Notes
-- Codex does not auto-load `.claude/rules/` — must be referenced in `AGENTS.md`
-- All critical rules should have references in `AGENTS.md`
-- Total: 29 rule files, ~124KB of engineering discipline
+## Notes
+
+- The example deliberately installs a small set first. Add rules after you have verified their effect in your project.
+- A path listed in `AGENTS.md` must exist in the target repository.
+- niuma-engine provides rules and integration guidance; it does not install backup jobs, branch protections, or schedulers for you.
+- See [Capabilities](../docs/capabilities.md) and [Compatibility](../docs/compatibility.md) before claiming an integration is verified.

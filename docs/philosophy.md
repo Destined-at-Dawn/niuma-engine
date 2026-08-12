@@ -1,72 +1,31 @@
-# Design Philosophy (v5.0)
+# Design philosophy
 
-## From Discipline Framework to Ecosystem
+## A discipline framework for AI-assisted engineering
 
-v1.0 was a solo discipline: one person, one AI, 10 rules to stop accidents.
+niuma-engine encodes recurring engineering failure patterns as reviewable rules. Its goal is not to make a coding model smarter; its goal is to make important workflow expectations explicit: inspect before changing, verify before declaring completion, record dead ends, and isolate concurrent work.
 
-v4.0 became a team sport: 29 rules covering multi-agent coordination, skill routing, and cross-workspace sync.
+## How a rule should earn its place
 
-**v5.0 is an ecosystem.** It governs not just one AI agent, but the entire system of agents, workspaces, scheduled tasks, skills, and knowledge that form the backbone of AI-assisted work.
+A useful rule describes:
 
----
+1. **Failure mode** — what went wrong or can predictably go wrong.
+2. **Trigger** — when the rule applies.
+3. **Action** — what the agent or maintainer should do.
+4. **Verification** — what evidence shows the action happened.
+5. **Limitation** — what the rule does not guarantee.
 
-## The Three Paradigm Shifts
+This structure makes rules discussable and revisable. A rule that does not improve a real decision can be simplified or removed.
 
-### Shift 1: From Tool to Architecture
+## Shipped rules versus reference architectures
 
-v4.0 treated each workspace as an independent unit. Rules were copied between workspaces. Knowledge stayed local.
+The repository currently ships Markdown rules, templates, and agent-integration guidance. Some rules describe broader patterns, such as backup layers, knowledge synchronization, and redundant scheduling. These are **reference architectures**, not bundled automation services.
 
-v5.0 introduces the **Knowledge Hub** as a single source of truth:
-- Shared rules live in one place, projected to all workspaces
-- Cross-tool lessons are dual-written: local + hub
-- A dedicated guardian (li-zhongshu) enforces synchronization
+A user who adopts those patterns must choose and operate the scripts, branch protections, storage, scheduler, credentials, and monitoring appropriate for their own environment. See [Capabilities](capabilities.md) for the public boundary.
 
-### Shift 2: From Single Layer to Defense in Depth
+## Evidence over claims
 
-v4.0 had individual safety rules (no-blind-overwrite, script-safety-check, git-recovery).
+Claims about reliability, compatibility, usage, or automation should be linked to public artifacts whenever possible. When a statement reflects maintainer experience rather than independent evidence, label it as such. Release notes and documentation should state the tested version and known limitations.
 
-v5.0 layers them into a **three-layer protection system (R21)**:
-- L1: Archive before every modification
-- L2: Git branch isolation (agent/{date}, auto-merge after 3 days)
-- L3: Daily zip snapshots with retention policy
+## Evolution
 
-Each layer can fail independently. Data loss requires all three layers to fail simultaneously.
-
-### Shift 3: From "Good Enough" to "Benchmarked"
-
-v4.0's skill creation guidance was: "Read 5 reference skills, then build."
-
-v5.0 adds a **quality benchmark**: every new skill must match the file structure of the ecosystem's best skills (6 top-level files + 5+ references + 1+ script + 24 quality gates).
-
-This came from a real incident: a skill was created with 4 files, while the benchmark skill had 17. It took 3 rounds of iteration to catch up. Now the benchmark enforces this from the start.
-
----
-
-## What v5.0 Governs
-
-| Layer | What | Primary Rules |
-|-------|------|---------------|
-| File Safety | Prevent data loss from AI mistakes | 21-git-archive-ironlaw, no-blind-overwrite, git-recovery |
-| Agent Coordination | Multiple agents working without conflict | agent-prompt-ironclad, subagent-strategy, agent-concurrency-fallback |
-| Knowledge Flow | Lessons and rules shared across workspaces | knowledge-hub-architecture, lesson-auto-update, dual-write-protocol |
-| Skill Quality | Skills that actually meet production standards | skill-quality-benchmark, skill-route-enforcement, skill-execution-discipline |
-| Task Reliability | Scheduled tasks that don't silently fail | scheduled-task-dual-redundancy |
-| Engineering Discipline | How individual tasks are executed | 10-engineering-laws, lifecycle-sop, think-before-act |
-
----
-
-## Principles That Survive All Versions
-
-1. **Rules grow from real accidents.** Every rule in this repo blocked a confirmed failure pattern. No rule was designed in isolation.
-
-2. **Negative results are first-class citizens.** Dead ends are documented, shared across workspaces via the Knowledge Hub, so no conversation repeats the same mistake.
-
-3. **Evidence over claims.** Every pass/complete/done statement carries a calibration label. Numbers without source are suspicion, not information.
-
-4. **The framework is alive.** It updates as new failure patterns are recognized in production. You are reading a snapshot, not a final answer.
-
----
-
-> v5.0, July 2026
-> 33 rules, 5 workspaces, 128+ skills, 6 scheduled tasks
-> From discipline to ecosystem.
+The ruleset evolves through maintainer observations, user feedback, reproducible counterexamples, and contribution review. A strong contribution shows not only a new rule, but also the failure pattern it addresses and a way to validate its value.

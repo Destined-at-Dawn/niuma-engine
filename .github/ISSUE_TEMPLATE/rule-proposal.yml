@@ -1,0 +1,41 @@
+name: Rule proposal
+about: Propose a new rule or a material change to an existing one
+labels: [rule-proposal]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Rules should encode a real failure mode and include a verification path. Avoid personal paths, private tools, and unsupported general claims.
+  - type: textarea
+    id: failure
+    attributes:
+      label: Failure mode
+      description: What repeatable failure does this address?
+    validations:
+      required: true
+  - type: textarea
+    id: trigger
+    attributes:
+      label: Trigger signal
+      description: When should the rule apply?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed action and verification
+      description: Include the action, expected evidence, and anti-patterns.
+    validations:
+      required: true
+  - type: textarea
+    id: limitation
+    attributes:
+      label: Limitation or trade-off
+      description: What does this rule not guarantee?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Sanitized example or fixture
+      description: Link a public example or describe a minimal reproduction if available.
