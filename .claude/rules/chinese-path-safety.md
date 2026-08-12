@@ -68,10 +68,10 @@ python /tmp/task.py
 
 ## 反模式警告
 
-- ❌ "单引号 heredoc 应该能保护中文" → 不能，locale 层在引号处理之后
-- ❌ "chcp 65001 切到 UTF-8 就行" → 不行，MSYS2 bash 不认 Windows code page
-- ❌ "上次 heredoc 中文成功了" → 可能是路径恰好全是 ASCII 或纯巧合
-- ❌ "Python 太重了，用 PowerShell 吧" → PS 通过 bash 启动时一样炸
+-  "单引号 heredoc 应该能保护中文" → 不能，locale 层在引号处理之后
+-  "chcp 65001 切到 UTF-8 就行" → 不行，MSYS2 bash 不认 Windows code page
+-  "上次 heredoc 中文成功了" → 可能是路径恰好全是 ASCII 或纯巧合
+-  "Python 太重了，用 PowerShell 吧" → PS 通过 bash 启动时一样炸
 
 ---
 

@@ -1,6 +1,6 @@
-# ⛔ 规则唯一存放位置：.claude/rules/（禁止创建根目录 rules/）
+#  规则唯一存放位置：.claude/rules/（禁止创建根目录 rules/）
 
-> ⚠ 本文件是**反向防御规则**——阻止 AI 在根目录重新创建 `rules/` 目录。
+>  本文件是**反向防御规则**——阻止 AI 在根目录重新创建 `rules/` 目录。
 
 ## 铁律
 - **所有规则必须放在 `.claude/rules/`**（Claude Code 自动加载此目录）
@@ -15,10 +15,10 @@
 
 ## 正确模式
 ```markdown
-# ✅ 规则位置
+#  规则位置
 .claude/rules/xxx.md
 
-# ❌ 禁止位置（已废弃）
+#  禁止位置（已废弃）
 rules/xxx.md
 根目录/rules/xxx.md
 ```

@@ -12,11 +12,11 @@
 
 | 环境 | 配置路径 | 备注 |
 |------|---------|------|
-| **Newmax（牛马AI）** | `{newmax-home}/.mcp.json` | ✅ 唯一正确路径 |
-| Claude Code 原版 | `{user-home}/.mcp.json` | ❌ Newmax 不读这个 |
+| **Newmax（牛马AI）** | `{newmax-home}/.mcp.json` |  唯一正确路径 |
+| Claude Code 原版 | `{user-home}/.mcp.json` |  Newmax 不读这个 |
 
-- ❌ **禁止**往 `~/.mcp.json` 写 MCP 配置（写了也白写，Newmax 不会加载）
-- ✅ **必须**写入 `~/.newmax/.mcp.json`
+-  **禁止**往 `~/.mcp.json` 写 MCP 配置（写了也白写，Newmax 不会加载）
+-  **必须**写入 `~/.newmax/.mcp.json`
 - 写入前必须 Read 该文件当前内容（No Blind Overwrite）
 
 ---
@@ -26,11 +26,11 @@
 **Newmax 直接调用可执行文件，不需要 `cmd /c` 包装。**
 
 ```json
-// ✅ 正确
+//  正确
 { "command": "npx", "args": ["-y", "some-package"] }
 { "command": "python", "args": ["some_script.py"] }
 
-// ❌ 错误（多余的 cmd 包装）
+//  错误（多余的 cmd 包装）
 { "command": "cmd", "args": ["/c", "npx", "-y", "some-package"] }
 { "command": "cmd", "args": ["/c", "python", "some_script.py"] }
 ```

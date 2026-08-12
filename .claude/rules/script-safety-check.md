@@ -71,13 +71,13 @@ Write-Output "WOULD DELETE: $path"
 
 ### 删除快捷方式的正确写法
 ```powershell
-# ✅ 正确：精确到文件
+#  正确：精确到文件
 $lnk = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\某应用.lnk"
 if (Test-Path $lnk) {
     Remove-Item $lnk -Force
 }
 
-# ❌ 错误：指向目录
+#  错误：指向目录
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"
 ```
 

@@ -1,4 +1,4 @@
-# ⛔ 禁止创建根目录 rules/（防御性规则 — 最高优先级）
+#  禁止创建根目录 rules/（防御性规则 — 最高优先级）
 
 > Claude Code 自动加载本文件。每次对话启动时生效。不可跳过。
 
@@ -6,10 +6,10 @@
 
 **根目录 `rules/` 是已废弃的目录，已全量删除。严禁在任何情况下重新创建。**
 
-- ✅ 规则唯一存放位置：`.claude/rules/`（本文件所在目录）
-- ❌ 禁止在根目录创建 `rules/` 目录
-- ❌ 禁止在 proj-ID 目录创建 `rules/` 目录
-- ❌ 禁止在任何文件中写入不含 `.claude/` 前缀的 `rules/` 路径
+-  规则唯一存放位置：`.claude/rules/`（本文件所在目录）
+-  禁止在根目录创建 `rules/` 目录
+-  禁止在 proj-ID 目录创建 `rules/` 目录
+-  禁止在任何文件中写入不含 `.claude/` 前缀的 `rules/` 路径
 
 ## 为什么 `.claude/rules/` 而非 `rules/`
 
@@ -28,7 +28,7 @@
 
 - `.claude/rules/_MIGRATED-TO-RULES.md` — 迁移说明 + 反向防御
 - `CLAUDE.md` § R16 根目录优先约束架构
-- `CLAUDE.md` § ⛔ 防回退铁律
+- `CLAUDE.md` §  防回退铁律
 
 ---
 

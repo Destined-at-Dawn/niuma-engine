@@ -11,7 +11,7 @@
 
 **执行**：
 1. skill-handler 会将 SKILL.md 内容注入上下文
-2. AI 必须先找到 `## ⚡ 执行协议` 或 `## [LIGHTNING] 执行协议` 段
+2. AI 必须先找到 `##  执行协议` 或 `## [LIGHTNING] 执行协议` 段
 3. 识别其中的「必读」文件列表
 4. **在执行任何 Phase 之前**，用 `Read` 工具读取所有必读 references/ 文件
 
