@@ -75,7 +75,7 @@ niuma-engine/
 
 ## Version and evolution
 
-The current public ruleset is **v5.0.0 / 34 rule files**. See [CHANGELOG.md](CHANGELOG.md) for history. The next release will include GitHub Release notes and migration guidance.
+The current public ruleset is **v5.1.0 / 34 rule files**. See [CHANGELOG.md](CHANGELOG.md) for history. Release notes are available in GitHub Releases.
 
 ## License
 

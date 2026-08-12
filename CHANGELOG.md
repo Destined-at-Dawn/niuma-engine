@@ -2,10 +2,14 @@
 
 ## Unreleased
 
+## v5.1.0 (2026-08-12) — OSS credibility foundation
+
 ### Changed
 - Reframed public documentation around shipped rules, documented integrations, and reference architectures.
-- Added a reproducible minimal-install path and a current Codex AGENTS.md example.
-- Added community-health files, issue forms, a PR template, and documentation consistency checks.
+- Added a reproducible minimal-install path and a current Codex `AGENTS.md` example.
+- Added community-health files, Issue Forms, a pull request template, and a local documentation-consistency check.
+- Added three sanitized, maintainer-reported incident patterns with verification steps and explicit limitations.
+- Enabled GitHub Discussions and Private Vulnerability Reporting for public collaboration and security disclosure.
 
 
 ## v5.0.0 (2026-07-06) -- 从单工具纪律到跨工具生态系统

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "project": "niuma-engine",
-  "current_version": "5.0.0",
+  "current_version": "5.1.0",
   "rule_count": 34,
-  "documentation_reviewed": "2026-08-11",
+  "documentation_reviewed": "2026-08-12",
   "public_positioning": "Engineering-discipline framework for AI coding agents: reusable rules and adapters, not an agent runtime."
 }

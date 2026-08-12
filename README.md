@@ -75,7 +75,7 @@ niuma-engine/
 
 ## 版本与演进
 
-当前公开规则集为 **v5.0.0 / 34 个规则文件**。版本历史见 [CHANGELOG.md](CHANGELOG.md)；下一次发布前会提供 GitHub Release 与迁移说明。
+当前公开规则集为 **v5.1.0 / 34 个规则文件**。版本历史见 [CHANGELOG.md](CHANGELOG.md)；发布说明见 GitHub Releases。
 
 ## 许可证
 
