@@ -27,3 +27,11 @@ What does this rule still not guarantee?
 ```
 
 Label anecdotal maintainer observations as such. Do not represent them as independently validated results without public evidence.
+
+## Published cases
+
+These are maintainer-reported and sanitized incident patterns. They describe the observed failure mode and a reproducible verification path; they are not independent benchmark results or universal reliability claims.
+
+- [An update erased the surrounding document](blind-overwrite.md)
+- [A strong metric survived without an audit trail](unverified-metric.md)
+- [A sub-agent returned an unusable investigation](underspecified-subagent.md)
